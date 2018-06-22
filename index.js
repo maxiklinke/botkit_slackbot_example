@@ -1,5 +1,3 @@
-
-
 require('dotenv').load();
 
 var Botkit = require('botkit');
