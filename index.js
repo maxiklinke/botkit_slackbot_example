@@ -20,8 +20,11 @@ var middleware = require('botkit-middleware-watson')({
 
 
 // Configure your bot.
-var slackController = Botkit.slackbot();
-var slackBot = slackController.spawn({
+const slackController = Botkit.slackbot({
+			// optional: wait for a confirmation events for each outgoing message before continuing to the next message in a conversation
+			require_delivery: true
+		});
+const slackBot = slackController.spawn({
   token: process.env.SLACK_TOKEN
 });
 
@@ -46,7 +49,15 @@ slackController.hears(['.*'], ['direct_message', 'direct_mention', 'mention'], f
 
 
 
-slackBot.startRTM();
+// create rtm connection -> instant messaging
+		slackBot.startRTM((err, bot, payload) => {
+			if (err) {
+				throw new Error('Could not connect to Slack');
+			}
+			slackController.log('Slack connection established.');
+		});
+
+
 
 //START THE SERVER
 const server = app.listen(process.env.PORT || 5000, () => {
