@@ -25,10 +25,11 @@ const slackController = Botkit.slackbot({/*
     clientSecret: process.env.SLACK_CLIENTSECRET,
     scopes: ['bot', 'client'],*/
 			// optional: wait for a confirmation events for each outgoing message before continuing to the next message in a conversation
-			require_delivery: true
+			require_delivery: true,
+			debug: true
 		});
 const slackBot = slackController.spawn({
-  token: process.env.SLACK_TOKEN,
+  token: process.env.SLACK_TOKEN, // GET THE TOKEN FROM HERE: https://api.slack.com/custom-integrations/legacy-tokens
 });
 
 
