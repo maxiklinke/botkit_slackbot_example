@@ -53,14 +53,14 @@ slackController.hears(['.*'], ['direct_message', 'direct_mention', 'mention'], f
 
 
 // create rtm connection -> instant messaging
-/*		slackBot.startRTM((err, bot, payload) => {
+		slackBot.startRTM((err, bot, payload) => {
 			if (err) {
 				throw new Error('Could not connect to Slack '+err);
 			}
 			slackController.log('Slack connection established.');
 		});
-*/
-slackBot.startRTM();
+
+//slackBot.startRTM();
 
 
 //START THE SERVER
