@@ -23,7 +23,7 @@ var middleware = require('botkit-middleware-watson')({
 const slackController = Botkit.slackbot({
 	clientId: process.env.SLACK_CLIENTID,
     clientSecret: process.env.SLACK_CLIENTSECRET,
-    scopes: ['bot'],
+    scopes: ['bot', 'client'],
 			// optional: wait for a confirmation events for each outgoing message before continuing to the next message in a conversation
 			require_delivery: true
 		});
